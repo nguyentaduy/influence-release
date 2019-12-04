@@ -22,7 +22,7 @@ import IPython
 import tensorflow as tf
 import math
 
-from influence.genericNeuralNet import GenericNeuralNet, variable, variable_with_weight_decay
+from .genericNeuralNet import GenericNeuralNet, variable, variable_with_weight_decay
 
 def log_loss(x, t):
     exponents = -(x-1)/t
@@ -252,7 +252,7 @@ class SmoothHinge(GenericNeuralNet):
             print('Using model minus one')
             model = self.svm_model_minus_one
         else:
-            raise ValueError, "feed_dict has incorrect number of training examples"
+            raise ValueError("feed_dict has incorrect number of training examples")
 
         model.fit(X_train, Y_train)
         # sklearn returns coefficients in shape num_classes x num_features
